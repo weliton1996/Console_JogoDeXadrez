@@ -14,6 +14,7 @@ namespace xadrez
         }
         public Posicao toPosicao()
         {
+            //Usando a tabela ASCII como logica para subtrair os valores da coluna.
             return new Posicao(8-linha, coluna -'a');
         }
         public override string ToString()
