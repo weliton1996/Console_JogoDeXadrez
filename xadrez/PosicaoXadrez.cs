@@ -4,22 +4,22 @@ namespace xadrez
 {
     internal class PosicaoXadrez
     {
-        public char coluna { get; set; }
-        public int linha { get; set; }
+        public char Coluna { get; set; }
+        public int Linha { get; set; }
 
         public PosicaoXadrez(char coluna, int linha)
         {
-            this.coluna = coluna;
-            this.linha = linha;
+            this.Coluna = coluna;
+            this.Linha = linha;
         }
-        public Posicao toPosicao()
+        public Posicao ToPosicao()
         {
             //Usando a tabela ASCII como logica para subtrair os valores da coluna.
-            return new Posicao(8-linha, coluna -'a');
+            return new Posicao(8-Linha, Coluna -'a');
         }
         public override string ToString()
         {
-            return ""+ coluna+linha;
+            return ""+ Coluna+Linha;
         }
     }
 }
