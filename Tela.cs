@@ -15,7 +15,7 @@ namespace xadrez_console
             Console.WriteLine("Turno: " + partida.Turno);
             if(!partida.Terminada)
             {
-                
+
                 Console.WriteLine("Aquardando jogada: " + partida.JogadorAtual);
                 if(partida.Xeque)
                 {
@@ -25,7 +25,7 @@ namespace xadrez_console
             else
             {
                 Console.WriteLine("XEQUEMATE!");
-                Console.WriteLine("Vencedor: "+partida.JogadorAtual);
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
             }
         }
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
@@ -36,7 +36,7 @@ namespace xadrez_console
             Console.WriteLine();
             Console.Write("Pretas: ");
             ConsoleColor aux = Console.ForegroundColor;
-            Console.ForegroundColor=ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             ImprimirConjuntos(partida.PecasCapturadas(Cor.Preta));
             Console.ForegroundColor = aux;
             Console.WriteLine();
@@ -53,16 +53,23 @@ namespace xadrez_console
         }
         public static void ImprimirTabuleiro(Tabuleiro tab)
         {
+            ConsoleColor aux = Console.ForegroundColor;
             for(int i = 0; i < tab.Linhas; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(8 - i + " ");
+                Console.ForegroundColor = aux;
                 for(int j = 0; j < tab.Colunas; j++)
                 {
                     ImprimirPeca(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
+
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  a b c d e f g h");
+            Console.ForegroundColor = aux;
+
         }
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
         {
@@ -87,7 +94,10 @@ namespace xadrez_console
                 }
                 Console.WriteLine();
             }
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  a b c d e f g h");
+            Console.ForegroundColor = aux;
             Console.BackgroundColor = fundoOriginal;
         }
         public static PosicaoXadrez LerPosicaoXadrez()
