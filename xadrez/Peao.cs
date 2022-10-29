@@ -15,7 +15,7 @@ namespace xadrez_console.xadrez
         private bool ExisteInimigo(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
-            return p != null || p.Cor != Cor;
+            return p != null && p.Cor != Cor;
         }
         private bool Livre(Posicao pos)
         {
@@ -35,16 +35,17 @@ namespace xadrez_console.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.DefinirValores(Posicao.Linha - 2, Posicao.Coluna);
-                if(Tab.PosicaoValida(pos) && Livre(pos))
-                {
-                    mat[pos.Linha, pos.Coluna] = true;
-                }
-                pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
-                if(Tab.PosicaoValida(pos) && ExisteInimigo(pos))
+                Posicao p2 = new Posicao(Posicao.Linha - 1, Posicao.Coluna);
+                if(Tab.PosicaoValida(p2) && Livre(p2) && Tab.PosicaoValida(pos) && Livre(pos) && QteMovimento == 0) 
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+                if(Tab.PosicaoValida(pos) && ExisteInimigo(pos))
+                {
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
+                pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
                 if(Tab.PosicaoValida(pos) && ExisteInimigo(pos))
                 {
                     mat[pos.Linha, pos.Coluna] = true;
@@ -58,7 +59,8 @@ namespace xadrez_console.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.DefinirValores(Posicao.Linha + 2, Posicao.Coluna);
-                if(Tab.PosicaoValida(pos) && Livre(pos))
+                Posicao p2 = new Posicao(Posicao.Linha +2, Posicao.Coluna);
+                if(Tab.PosicaoValida(p2) && Livre(p2) && Tab.PosicaoValida(pos) && Livre(pos) && QteMovimento == 0) 
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }

@@ -6,7 +6,7 @@ namespace tabuleiro
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,] pecas;
+        private Peca?[,] pecas;
 
         public Tabuleiro(int linhas, int colunas)
         {
@@ -37,7 +37,7 @@ namespace tabuleiro
             pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
         }
-        public Peca? RetirarPeca(Posicao pos)
+        public Peca RetirarPeca(Posicao pos)
         {
             if(Peca(pos) == null)
             {
